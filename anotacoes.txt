@@ -1,0 +1,12 @@
+*BEM CSS*
+Conceito principal:
+
+Block (Bloco): um componente independente da interface.
+Ex: menu, card, button
+
+Element (Elemento): parte de um bloco, que só faz sentido dentro dele.
+Ex: menu__item, card__title, button__icon
+
+Modifier (Modificador): variação ou estado de um bloco/elemento.
+Ex: button--primary, card--highlighted, menu__item--active
+
