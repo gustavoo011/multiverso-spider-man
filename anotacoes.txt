@@ -10,3 +10,124 @@ Ex: menu__item, card__title, button__icon
 Modifier (Modificador): variação ou estado de um bloco/elemento.
 Ex: button--primary, card--highlighted, menu__item--active
 
+*BEFORE CSS*
+O ::before no CSS é um pseudo-elemento que permite inserir conteúdo antes do conteúdo real de um elemento HTML, sem precisar criar outra tag no HTML.
+
+Ele é muito usado para adicionar ícones, decorações ou pequenos textos.
+
+Observações importantes:
+
+-Sempre precisa da propriedade content, mesmo que seja "" (vazio).
+
+-Funciona melhor em elementos block ou inline-block.
+
+-Pode ser combinado com position: absolute; para criar efeitos visuais.
+
+*:NTH-CHILD()*
+nth child
+O ChatGPT disse:
+
+O seletor :nth-child() no CSS serve para selecionar elementos com base na ordem em que aparecem dentro do pai.
+
+Sintaxe:
+elemento:nth-child(n)
+
+
+n pode ser um número, uma fórmula ou palavra-chave.
+
+Exemplos práticos:
+1. Selecionar o 2º filho:
+li:nth-child(2) {
+  color: red;
+}
+
+2. Selecionar todos os filhos pares:
+li:nth-child(even) {
+  background: lightblue;
+}
+
+3. Selecionar todos os filhos ímpares:
+li:nth-child(odd) {
+  background: lightgreen;
+}
+
+4. Selecionar com fórmula (an+b):
+/* Todos os 3º, 6º, 9º, ... */
+li:nth-child(3n) {
+  color: purple;
+}
+
+5. Selecionar um intervalo (exemplo: do 1º ao 3º filho):
+li:nth-child(-n+3) {
+  font-weight: bold;
+}
+
+Diferença entre :nth-child() e :nth-of-type():
+
+:nth-child() → considera a posição de todos os filhos, independente da tag.
+
+:nth-of-type() → considera apenas os filhos de um mesmo tipo.
+
+Exemplo:
+
+<div>
+  <p>Parágrafo 1</p>
+  <span>Span 1</span>
+  <p>Parágrafo 2</p>
+</div>
+
+p:nth-child(2) { color: red; }      /* NÃO pega nada, pois o 2º filho é um <span> */
+p:nth-of-type(2) { color: red; }    /* Pega o "Parágrafo 2" */
+
+*Z-INDEX*
+O z-index no CSS define a ordem de empilhamento dos elementos quando eles se sobrepõem na página.
+Pense como se fossem camadas: quanto maior o valor do z-index, mais “em cima” o elemento vai aparecer.
+
+Regras básicas:
+
+Só funciona em elementos posicionados (position: relative, absolute, fixed ou sticky).
+
+O valor padrão é auto (que equivale a 0 na maioria dos casos).
+
+Quanto maior o número, mais acima na pilha o elemento aparece.
+
+Exemplo simples:
+<div class="box1">Caixa 1</div>
+<div class="box2">Caixa 2</div>
+
+.box1 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: red;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+}
+
+.box2 {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  background: blue;
+  width: 100px;
+  height: 100px;
+  z-index: 2; /* aparece acima da box1 */
+}
+
+Dicas importantes:
+
+Se dois elementos têm o mesmo z-index, o que aparece depois no HTML fica por cima.
+
+z-index pode ser negativo:
+
+.fundo {
+  position: absolute;
+  z-index: -1;
+}
+
+
+Isso joga o elemento atrás dos outros.
+
+Elementos com z-index criam contexto de empilhamento.
+Isso significa que um filho nunca vai ultrapassar o "nível" máximo do pai.
